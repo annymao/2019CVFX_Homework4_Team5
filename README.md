@@ -122,12 +122,12 @@ FLANN(Fast Library for Approximate Nearest Neighbors)這裡是先利用SIFT提�
 </p>
 
 #### C. SURF
-上面提到了 SIFT 雖然效果不錯，但是他的速度慢且產生的資料量很大。而 SURF 可以解決這兩個問題。利用 box filter 對 [積分圖](https://zh.wikipedia.org/wiki/%E7%A7%AF%E5%88%86%E5%9B%BE) 進行計算，得出 Hessian matrix。這個方法的好處是，不同大小的 box filter 可以平行計算，加快速度。
+SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速度緩慢的缺點。他常用於偵測corner以及明顯的材質紋路。利用 box filter 對 [積分圖](https://zh.wikipedia.org/wiki/%E7%A7%AF%E5%88%86%E5%9B%BE) 進行計算，得出 Hessian matrix。這個方法的好處是，不同大小的 box filter 可以平行計算，加快速度。
 
 <img src="./Images/SURF.png" width="600px" />
 
-優點：速度比 SIFT 快，，資料量較少<br>
-缺點：與 ORB 相比還是比較慢
+優點：速度比 SIFT 快，資料量較少，可使用於realtime環境<br>
+缺點：速度上仍比不上FAST等keypoint detector
 
 ##### scale
 
@@ -149,11 +149,6 @@ FLANN(Fast Library for Approximate Nearest Neighbors)這裡是先利用SIFT提�
 	<img src="./Images/dragonBright3.png" width="400px" />
 	<img src="./Images/dormBright3.png" width="400px" />
 </p>
-
-SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速度緩慢的缺點。他常用於偵測corner以及明顯的材質紋路。
-
-優點：可使用於realtime環境，但速度上仍比不上FAST等keypoint detector
-
 
 
 ## Image Alignment and Infinite Zooming Effect
