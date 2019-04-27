@@ -17,17 +17,6 @@
 
 ## Feature Extraction and Comparison
 
-#### A. ORB
-<img src="./Images/ORB12.png" width="200px" />
-<img src="./Images/ORB34.png" width="200px" />
-
-#### B. SIFT
-<img src="./Images/SIFT12.png" width="200px" />
-<img src="./Images/SIFT34.png" width="200px" />
-
-#### C. FLANN 
-<img src="./Images/FLANN12.png" width="200px" />
-<img src="./Images/FLANN34.png" width="200px" />
 
 ## Image Alignment and Infinite Zooming Effect
 ![dorm](Images/out_GIF_ORB.gif)
