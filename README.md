@@ -62,10 +62,65 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 優點：對尺度具有不變性，即使改變角度、亮度、視角，都能夠得到很好的檢測效果 <br>
 缺點：速度慢、產生的資料量大
 
+##### scale
+
+<p float="left">
+	<img src="./Images/dragonScale.png" width="400px" />
+	<img src="./Images/dormScale.png" width="400px" />
+</p>
+
+##### rotate
+
+<p float="left">
+	<img src="./Images/dragonRotate.png" width="400px" />
+	<img src="./Images/dormRotate.png" width="400px" />
+</p>
+
+##### brightness
+
+<p float="left">
+	<img src="./Images/dragonBright.png" width="400px" />
+	<img src="./Images/dormBright.png" width="400px" />
+</p>
+
 #### C. SURF
+上面提到了 SIFT 雖然效果不錯，但是他的速度慢且產生的資料量很大。而 SURF 可以解決這兩個問題。利用 box filter 對 [積分圖](https://zh.wikipedia.org/wiki/%E7%A7%AF%E5%88%86%E5%9B%BE) 進行計算，得出 Hessian matrix。這個方法的好處是，不同大小的 box filter 可以平行計算，加快速度。
+
+<img src="./Images/SURF.png" width="600px" />
+
+優點：速度比 SIFT 快，，資料量較少<br>
+缺點：與 ORB 相比還是比較慢
+
+##### scale
+
+<p float="left">
+	<img src="./Images/dragonScale3.png" width="400px" />
+	<img src="./Images/dormScale3.png" width="400px" />
+</p>
+
+##### rotate
+
+<p float="left">
+	<img src="./Images/dragonRotate3.png" width="400px" />
+	<img src="./Images/dormRotate3.png" width="400px" />
+</p>
+
+##### brightness
+
+<p float="left">
+	<img src="./Images/dragonBright3.png" width="400px" />
+	<img src="./Images/dormBright3.png" width="400px" />
+</p>
 
 ## Image Alignment and Infinite Zooming Effect
-![dorm](Images/out_GIF_ORB.gif)
+
+### ORB
+ORB            |  SIFT
+:-------------------------:|:-------------------------:
+![ORB](./Images/out_GIF_ORB.gif)  |  ![](./Images/out_GIF_SIFT.gif)
+
+
+
 
 ## Image Processing
 
@@ -75,6 +130,9 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 	<img src="./Images/before.png" width="300px" />
 	<img src="./Images/after.png" width="300px" />
 </p>
+
+由於上面用 Image Align 做出來的效果實在是差強人意，故我們後來使用 AE 來進行實作以下為我們產生的成果：
+
 
 ## Conclusion
 
