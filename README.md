@@ -33,18 +33,24 @@ ORB主要是為了拿來取代SIFT和SURF，因為前兩個都有申請專利，
 
 ##### scale
 
-<img src="./Images/scale.png" width="300px" />
-<img src="./Images/scale2.png" width="300px" />
+<p float="left">
+	<img src="./Images/scale.png" width="400px" />
+	<img src="./Images/scale2.png" width="400px" />
+</p>
 
 ##### rotate
 
-<img src="./Images/rotate.png" width="300px" />
-<img src="./Images/rotate2.png" width="300px" />
+<p float="left">
+	<img src="./Images/rotate.png" width="400px" />
+	<img src="./Images/rotate2.png" width="400px" />
+</p>
 
 ##### brightness
 
-<img src="./Images/brightness.png" width="300px" />
-<img src="./Images/brightness2.png" width="300px" />
+<p float="left">
+	<img src="./Images/brightness.png" width="400px" />
+	<img src="./Images/brightness2.png" width="400px" />
+</p>
 
 #### 2. SIFT 
 
