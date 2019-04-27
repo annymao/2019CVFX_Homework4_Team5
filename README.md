@@ -22,7 +22,7 @@
 
 ## Feature Extraction and Comparison
 
-#### 1. ORB
+#### A. ORB
 
 ORB (Oriented Fast and rotated BRIEF) 是將FAST和BRIEF特徵描述的方式結合起來，並在他們的基礎上做改進跟優化。<br>
 ORB主要是為了拿來取代SIFT和SURF，因為前兩個都有申請專利，無法被免費使用。<br>
@@ -52,7 +52,7 @@ ORB主要是為了拿來取代SIFT和SURF，因為前兩個都有申請專利，
 	<img src="./Images/brightness2.png" width="400px" />
 </p>
 
-#### 2. SIFT 
+#### B. SIFT 
 
 SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周圍16x16個像素點，再切分為4x4的cell。接著，針對每個cell會再進行gradient magnitude和orientation的計算。<br>
 得到16組8 bin 的histograms後，可以再合併為16x8維的資料。最後對這些資料做L2-Normalizing，就可以得到代表那個keypoint的feature vector。 <br>
@@ -62,8 +62,22 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 優點：對尺度具有不變性，即使改變角度、亮度、視角，都能夠得到很好的檢測效果 <br>
 缺點：速度慢、產生的資料量大
 
-#### 3. SURF
+#### C. SURF
 
 ## Image Alignment and Infinite Zooming Effect
 ![dorm](Images/out_GIF_ORB.gif)
+
+## Conclusion
+
+|    name    | ORB | SIFT | SURF |
+| ---------- | --- | ---- | ---- |
+| 速度       |  快 |  中  |  慢  |
+| ...        | ... | ...  |  ... |
+
+## Reference
+
+在 SIFT,SURF,ORB,FAST,BRISK 特徵提取演算法比較(https://www.itread01.com/content/1546487137.html)篇文章中有對
+各種演算法進行各種詳細的比較。其中他有比較各個演算法的執行時間，在ORB、SIFT、SURF三項中與我們的實驗結果相符合。
+
+<img src="./Images/comparison.png" width="600px" />
 
