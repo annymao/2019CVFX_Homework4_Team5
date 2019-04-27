@@ -130,13 +130,19 @@ SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速�
 
 ## Image Alignment and Infinite Zooming Effect
 
-### ORB
-ORB            |  SIFT
-:-------------------------:|:-------------------------:
-![ORB](./Images/out_GIF_ORB.gif)  |  ![](./Images/out_GIF_SIFT.gif)
+ORB            |  SIFT           |  SURF           |  FLANN
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![ORB](./Images/out_GIF_ORB.gif)  |  ![](./Images/out_GIF_SIFT.gif)|  ![](./Images/out_GIF_SURF.gif)|  ![](./Images/out_GIF_FLANN.gif)
 
 
 
+我們的作法如下<br>
+1. 將圖片進行放大
+2. 放大約 1.15 倍時加入第二張圖，進行 image alignment
+3. 重複 1、2
+
+從結果中可以看到，圖片到最後都會壞掉，我們認為這可能是因為在放大與 align 的過程中，可能導致後來貼上的圖片變形，越來越歪。而上一張圖片歪了之後，下一張圖片通常就會變得更歪，導致最後一發不可收拾，直接壞掉。<br>
+另外從 Feature Extraction 產生的結果也可以看出，到後面幾張圖片的時候，產生了許多交叉的線，這些找錯的 feature matching 就是讓圖片扭曲的主要原因。我們嘗試了在很多種放大倍率的情況下加入圖片，但效果都不彰。
 
 ## Image Processing
 
@@ -148,7 +154,10 @@ ORB            |  SIFT
 </p>
 
 由於上面用 Image Align 做出來的效果實在是差強人意，故我們後來使用 AE 來進行實作以下為我們產生的成果：
+[![Youtube](./Images/Youtube.png)](https://www.youtube.com/watch?v=7wjfgfAkjJU)
 
+我們的實作方式是參考[這個連結](https://www.youtube.com/watch?v=pOmW76fADz8&t=80s)所做的，對於圖片的邊界也進行了羽化的處理，讓邊界看起來不要那麼明顯。<br>
+利用 AE 做出來的效果比 code 看起來好非常多，如果就一次摸索得人來說，我覺得使用 AE 也比用 code 容易，因為要很好的去 extract 出 feature 並正確的 align 實在太難了。但如果真的寫出來可以做出很好結果的 code，那所花費的時間就可以快上很多。
 
 ## Conclusion
 
