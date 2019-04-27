@@ -22,11 +22,22 @@
 
 ## Feature Extraction and Comparison
 
+#### Introduction
+
+在做影像辨識的時候，能夠提供資訊的特性有edge、corner、blobs等等。像是下圖中 D 圖可以很容易判斷出是兔子眼睛。 <br>
+但是像 C 屬於一個沒有變化的局部影像，看不出明顯的特性，就無法明確辨識出屬於圖片中的哪個區域。如果能提取好的keypoint， <br>
+再針對keypoint計算feature就能用來辨識物體。總而言之，影像辨識大致上的步驟可以歸納為 <br>
+keypoint detection -> feature extration -> feature matching <br>
+
+<img src="./Images/choice.png" width="700px" /> 
+<img src="./Images/rabbit.png" width="500px" /> 
+
+下面我們會介紹並比較三種較為常見的feature extraction演算法。
+
 #### A. ORB
 
-ORB (Oriented Fast and rotated BRIEF) 是將FAST和BRIEF特徵描述的方式結合起來，並在他們的基礎上做改進跟優化。<br>
-ORB主要是為了拿來取代SIFT和SURF，因為前兩個都有申請專利，無法被免費使用。<br>
-首先，ORB會利用FAST來檢測keypoint，再將所搜尋除來的結果用Harris corner取出前N個最有可能是corner的keypoint。<br>
+ORB (Oriented Fast and rotated BRIEF) 是將FAST和BRIEF特徵描述的方式結合起來，並在他們的基礎上做改進跟優化。
+首先，ORB會利用FAST來檢測keypoint，再將所搜尋除來的結果用Harris corner取出前N個最有可能是corner的keypoint。
 為了能夠應對rotation的變化，ORB會對每個keypoint計算weighted centroid，也就是從keypoint到其他weighted centroid的方向。<br>
 
 優點：速度最快、ORB descriptor的表現比SURF來得更好<br>
@@ -54,13 +65,14 @@ ORB主要是為了拿來取代SIFT和SURF，因為前兩個都有申請專利，
 
 #### B. SIFT 
 
-SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周圍16x16個像素點，再切分為4x4的cell。接著，針對每個cell會再進行gradient magnitude和orientation的計算。<br>
-得到16組8 bin 的histograms後，可以再合併為16x8維的資料。最後對這些資料做L2-Normalizing，就可以得到代表那個keypoint的feature vector。 <br>
+SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周圍16x16個像素點，再切分為4x4的cell。
+接著，針對每個cell會再進行gradient magnitude和orientation的計算。得到16組8 bin 的histograms後，可以再合併為16x8維的資料。
+最後對這些資料做L2-Normalizing，就可以得到代表那個keypoint的feature vector。 <br>
 
 <img src="./Images/SIFT.png" width="600px" />
 
 優點：對尺度具有不變性，即使改變角度、亮度、視角，都能夠得到很好的檢測效果 <br>
-缺點：速度慢、產生的資料量大
+缺點：速度慢、產生的資料量大、不適用於realtime環境
 
 ##### scale
 
@@ -112,6 +124,10 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 	<img src="./Images/dormBright3.png" width="400px" />
 </p>
 
+SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速度緩慢的缺點。他常用於偵測corner以及明顯的材質紋路。
+
+優點：可使用於realtime環境，但速度上仍比不上FAST等keypoint detector
+
 ## Image Alignment and Infinite Zooming Effect
 
 ### ORB
@@ -136,15 +152,15 @@ ORB            |  SIFT
 
 ## Conclusion
 
-|    name    |  ORB  | SIFT | SURF |
-| :--------: |  :--: | :--: | :--: |
-|    速度    |  快   |  中  |  慢  |
-| ...        |  ...  | ...  |  ... |
+|    name    |  ORB    | SIFT        | SURF |
+| :--------: |  :--:   | :--:        | :--: |
+|    速度    |  快     |  慢         |  中  |
+|    用途    |  ...    | blob、corner| corner、texture|
 
 ## Reference
 
-在 [SIFT,SURF,ORB,FAST,BRISK 特徵提取演算法比較](https://www.itread01.com/content/1546487137.html)這篇文章中有對各種feature extraction演算法進行詳細的比較。<br>
-其中在ORB、SIFT、SURF三項的執行時間上與我們的結論相符合。
-
+在[A Comparison of SIFT, PCA-SIFT and SURF](https://pdfs.semanticscholar.org/b00c/19f4c596f6b99c34ec6c612adcc61d4e6b53.pdf)這篇論文中
+作者對以上三個以算法在經過縮放、旋轉、模糊、亮度等變化之後，與原影像進行匹配，並統計其效果。由上表中可以知道，SIFT在縮放和
+旋轉變化的情況下效果最好，而SURF在亮度變化下的匹配效果最好。此外，SURF的速度約是SIFT的3倍。
 <img src="./Images/comparison.png" width="600px" />
 
