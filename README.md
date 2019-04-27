@@ -69,14 +69,14 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 
 ## Conclusion
 
-|    name    | ORB | SIFT | SURF |
-| ---------- | --- | ---- | ---- |
-| 速度       |  快 |  中  |  慢  |
-| ...        | ... | ...  |  ... |
+|    name    |  ORB  | SIFT | SURF |
+| :--------: |  :--: | :--: | :--: |
+|    速度    |  快   |  中  |  慢  |
+| ...        |  ...  | ...  |  ... |
 
 ## Reference
 
-在 SIFT,SURF,ORB,FAST,BRISK 特徵提取演算法比較(https://www.itread01.com/content/1546487137.html)篇文章中有對
+在 [SIFT,SURF,ORB,FAST,BRISK 特徵提取演算法比較](https://www.itread01.com/content/1546487137.html)篇文章中有對
 各種演算法進行各種詳細的比較。其中他有比較各個演算法的執行時間，在ORB、SIFT、SURF三項中與我們的實驗結果相符合。
 
 <img src="./Images/comparison.png" width="600px" />
