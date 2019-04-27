@@ -67,6 +67,15 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 ## Image Alignment and Infinite Zooming Effect
 ![dorm](Images/out_GIF_ORB.gif)
 
+## Image Processing
+
+在做image alignment的時候，我們嘗試在邊緣的地方加上羽化的效果，如此一來可以讓視覺效果變得比較柔和，不會有明顯的界線。
+
+<p float="left">
+	<img src="./Images/before.png" width="300px" />
+	<img src="./Images/after.png" width="300px" />
+</p>
+
 ## Conclusion
 
 |    name    |  ORB  | SIFT | SURF |
