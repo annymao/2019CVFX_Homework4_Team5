@@ -104,5 +104,5 @@ SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速�
 在[A Comparison of SIFT, PCA-SIFT and SURF](https://pdfs.semanticscholar.org/b00c/19f4c596f6b99c34ec6c612adcc61d4e6b53.pdf)這篇論文中
 作者對以上三個以算法在經過縮放、旋轉、模糊、亮度等變化之後，與原影像進行匹配，並統計其效果。由上表中可以知道，SIFT在縮放和
 旋轉變化的情況下效果最好，而SURF在亮度變化下的匹配效果最好。此外，SURF的速度約是SIFT的3倍。
-<img src="./Images/comparison.png" width="600px" />
+<img src="./Images/comparison.png" width="1000px" />
 
