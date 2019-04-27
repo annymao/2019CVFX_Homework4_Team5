@@ -171,6 +171,8 @@ ORB            |  SIFT           |  SURF           |  FLANN
 
 從結果中可以看到，圖片到最後都會壞掉，我們認為這可能是因為在放大與 align 的過程中，可能導致後來貼上的圖片變形，越來越歪。而上一張圖片歪了之後，下一張圖片通常就會變得更歪，導致最後一發不可收拾，直接壞掉。<br>
 另外從 Feature Extraction 產生的結果也可以看出，到後面幾張圖片的時候，產生了許多交叉的線，這些找錯的 feature matching 就是讓圖片扭曲的主要原因。我們嘗試了在很多種放大倍率的情況下加入圖片，但效果都不彰。
+<img src="./Images/OUTSIFT.png" width="300px" />
+
 
 ## Image Processing
 
