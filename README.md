@@ -181,7 +181,7 @@ ORB            |  SIFT           |  SURF           |  FLANN
 	<img src="./Images/after.png" width="300px" />
 </p>
 
-由於上面用 Image Align 做出來的效果實在是差強人意，故我們後來使用 AE 來進行實作以下為我們產生的成果：
+由於上面用 Image Align 做出來的效果實在是差強人意，故我們後來使用 AE 來進行實作以下為我們產生的成果(點擊圖片可進入 youtube 連結)：
 [![Youtube](./Images/Youtube.png)](https://www.youtube.com/watch?v=7wjfgfAkjJU)
 
 我們的實作方式是參考[這個連結](https://www.youtube.com/watch?v=pOmW76fADz8&t=80s)所做的，對於圖片的邊界也進行了羽化的處理，讓邊界看起來不要那麼明顯。<br>
