@@ -22,7 +22,15 @@
 
 ## Feature Extraction and Comparison
 
-在做影像辨識的時候，能夠提供資訊
+在做影像辨識的時候，能夠提供資訊的特性有edge、corner、blobs等等。像是下圖中 D 圖可以很容易判斷出是兔子眼睛。 <br>
+但是像 C 屬於一個很沒有變化的局部影像，沒有明顯的特性，圖片中很多地方都跟他長得類似。因此，提取好的keypoint， <br>
+再針對keypoint計算feature就能用來辨識物體。總而言之，大致上的步驟可以歸納為 <br>
+keypoint detection -> feature extration -> feature matching <br>
+
+<img src="./Images/choice.png" width="500px" /> 
+<img src="./Images/rabbit.png" width="500px" /> 
+
+下面我們會介紹並比較三種較為常見的feature extraction演算法。
 
 #### A. ORB
 
