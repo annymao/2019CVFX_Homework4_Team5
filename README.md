@@ -95,6 +95,32 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 	<img src="./Images/dormBright.png" width="400px" />
 </p>
 
+#### (補充) Feature Matching: FLANN-Based Matcher
+FLANN(Fast Library for Approximate Nearest Neighbors)這裡是先利用SIFT提取keypoints並且計算descriptors，接著FLANN利用KNN演算法進行feature matching。並且會使用ratio test來減少錯誤的feature matching。<br>
+
+優點：是目前最快的feature matching演算法，能夠減少計算複雜度以及時間，因此也適合應用在feature 較多的場景。<br>
+
+#### scale
+
+<p float="left">
+	<img src="./Images/flann_scale2.png" width="400px" />
+	<img src="./Images/flann_scale3.png" width="400px" />
+</p>
+
+##### rotate
+
+<p float="left">
+	<img src="./Images/flann_rotate.png" width="400px" />
+	<img src="./Images/flann_rotate2.png" width="400px" />
+</p>
+
+##### brightness
+
+<p float="left">
+	<img src="./Images/flann_brightness.png" width="400px" />
+	<img src="./Images/flann_brightness2.png" width="400px" />
+</p>
+
 #### C. SURF
 上面提到了 SIFT 雖然效果不錯，但是他的速度慢且產生的資料量很大。而 SURF 可以解決這兩個問題。利用 box filter 對 [積分圖](https://zh.wikipedia.org/wiki/%E7%A7%AF%E5%88%86%E5%9B%BE) 進行計算，得出 Hessian matrix。這個方法的好處是，不同大小的 box filter 可以平行計算，加快速度。
 
@@ -127,6 +153,8 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速度緩慢的缺點。他常用於偵測corner以及明顯的材質紋路。
 
 優點：可使用於realtime環境，但速度上仍比不上FAST等keypoint detector
+
+
 
 ## Image Alignment and Infinite Zooming Effect
 
