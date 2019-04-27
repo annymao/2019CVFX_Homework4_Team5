@@ -36,9 +36,8 @@ keypoint detection -> feature extration -> feature matching <br>
 
 #### A. ORB
 
-ORB (Oriented Fast and rotated BRIEF) 是將FAST和BRIEF特徵描述的方式結合起來，並在他們的基礎上做改進跟優化。<br>
-ORB主要是為了拿來取代SIFT和SURF，因為前兩個都有申請專利，無法被免費使用。<br>
-首先，ORB會利用FAST來檢測keypoint，再將所搜尋除來的結果用Harris corner取出前N個最有可能是corner的keypoint。<br>
+ORB (Oriented Fast and rotated BRIEF) 是將FAST和BRIEF特徵描述的方式結合起來，並在他們的基礎上做改進跟優化。
+首先，ORB會利用FAST來檢測keypoint，再將所搜尋除來的結果用Harris corner取出前N個最有可能是corner的keypoint。
 為了能夠應對rotation的變化，ORB會對每個keypoint計算weighted centroid，也就是從keypoint到其他weighted centroid的方向。<br>
 
 優點：速度最快、ORB descriptor的表現比SURF來得更好<br>
@@ -66,15 +65,20 @@ ORB主要是為了拿來取代SIFT和SURF，因為前兩個都有申請專利，
 
 #### B. SIFT 
 
-SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周圍16x16個像素點，再切分為4x4的cell。接著，針對每個cell會再進行gradient magnitude和orientation的計算。<br>
-得到16組8 bin 的histograms後，可以再合併為16x8維的資料。最後對這些資料做L2-Normalizing，就可以得到代表那個keypoint的feature vector。 <br>
+SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周圍16x16個像素點，再切分為4x4的cell。
+接著，針對每個cell會再進行gradient magnitude和orientation的計算。得到16組8 bin 的histograms後，可以再合併為16x8維的資料。
+最後對這些資料做L2-Normalizing，就可以得到代表那個keypoint的feature vector。 <br>
 
 <img src="./Images/SIFT.png" width="600px" />
 
 優點：對尺度具有不變性，即使改變角度、亮度、視角，都能夠得到很好的檢測效果 <br>
-缺點：速度慢、產生的資料量大
+缺點：速度慢、產生的資料量大、不適用於realtime環境
 
 #### C. SURF
+
+SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速度緩慢的缺點。他常用於偵測corner以及明顯的材質紋路。
+
+優點：可使用於realtime環境，但速度上仍比不上FAST等keypoint detector
 
 ## Image Alignment and Infinite Zooming Effect
 ![dorm](Images/out_GIF_ORB.gif)
@@ -90,10 +94,10 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 
 ## Conclusion
 
-|    name    |  ORB  | SIFT | SURF |
-| :--------: |  :--: | :--: | :--: |
-|    速度    |  快   |  慢  |  中  |
-| ...        |  ...  | ...  |  ... |
+|    name    |  ORB    | SIFT        | SURF |
+| :--------: |  :--:   | :--:        | :--: |
+|    速度    |  快     |  慢         |  中  |
+|    用途    |  ...    | blob、corner| corner、texture|
 
 ## Reference
 
