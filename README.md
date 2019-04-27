@@ -122,12 +122,12 @@ FLANN(Fast Library for Approximate Nearest Neighbors)這裡是先利用SIFT提�
 </p>
 
 #### C. SURF
-上面提到了 SIFT 雖然效果不錯，但是他的速度慢且產生的資料量很大。而 SURF 可以解決這兩個問題。利用 box filter 對 [積分圖](https://zh.wikipedia.org/wiki/%E7%A7%AF%E5%88%86%E5%9B%BE) 進行計算，得出 Hessian matrix。這個方法的好處是，不同大小的 box filter 可以平行計算，加快速度。
+SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速度緩慢的缺點。他常用於偵測corner以及明顯的材質紋路。利用 box filter 對 [積分圖](https://zh.wikipedia.org/wiki/%E7%A7%AF%E5%88%86%E5%9B%BE) 進行計算，得出 Hessian matrix。這個方法的好處是，不同大小的 box filter 可以平行計算，加快速度。
 
 <img src="./Images/SURF.png" width="600px" />
 
-優點：速度比 SIFT 快，，資料量較少<br>
-缺點：與 ORB 相比還是比較慢
+優點：速度比 SIFT 快，資料量較少，可使用於realtime環境<br>
+缺點：速度上仍比不上FAST等keypoint detector
 
 ##### scale
 
@@ -150,11 +150,6 @@ FLANN(Fast Library for Approximate Nearest Neighbors)這裡是先利用SIFT提�
 	<img src="./Images/dormBright3.png" width="400px" />
 </p>
 
-SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速度緩慢的缺點。他常用於偵測corner以及明顯的材質紋路。
-
-優點：可使用於realtime環境，但速度上仍比不上FAST等keypoint detector
-
-
 
 ## Image Alignment and Infinite Zooming Effect
 
@@ -175,14 +170,15 @@ ORB            |  SIFT           |  FLANN           |  SURF
 
 除此之外，我們也懷疑可能是圖片的關係導致效果不好，所以我們也利用了 Ａ 圖片產生結果
 
-ORB            |  ＦＬＡＮＮ           
+ORB            |  SIFT+FLANN           
 :-------------------------:|:-------------------------:
 ![ORB](./Images/out2_GIF_ORB.gif)  |  ![](./Images/out2_GIF_FLANN.gif)
 
 這兩個看起來效果還可以，可能是因為 Ａ 圖片的光線比較充足，並且在拍攝的時候拍攝者是每兩步就拍一張照片，距離比較固定，所以在疊圖的過程中比較不會產生很嚴重的扭曲情形。而 Ｂ 圖片在拍攝的時候，每張之間的間距不ㄧ，並且光線也比較有明暗上的差距，這可能是導致扭曲的原因。另外我們覺得，Ｂ 所在的走廊有許多長得一樣的門，這可能導致 feature matching 的時候他 match 到錯的門，這可能也是會導致扭曲的原因之一。
 <br>
-三種方法之間，就 Ｂ 圖片的結果來說， ORB extractor 的效果比較好，圖片的扭曲比較少，其他方法可能是連結到了錯誤的門，導致圖片最後都大扭曲。<br>
-而 Ａ 圖片看來， SIFT 的結果好像比較優，走廊地面的部分 ORB 看起來歪來歪去的，SIFT 在窗戶地方的對齊也做得比較好。<br>
+<br>
+四種方法之間，就 B 圖片的結果來說， ORB extractor 的效果比較好，圖片的扭曲比較少，其他方法可能是連結到了錯誤的門，導致圖片最後都大扭曲。而 SIFT extractor 在加上 FLANN 之後，效果有變得比較好，比較不會有扭曲的情況，並且他在產生的速度上也比較快<br>
+而 A 圖片看來， SIFT＋FLANN 的結果好像比較優，走廊地面的部分 ORB 看起來歪來歪去的，SIFT+FLANN  在窗戶地方的對齊也做得比較好。<br>
 
 ## Image Processing
 
@@ -206,6 +202,9 @@ ORB            |  ＦＬＡＮＮ
 | :--------: |  :--:   | :--:        | :--: |
 |    速度    |  快     |  慢         |  中  |
 |    用途    |  ...    | blob、corner| corner、texture|
+
+圖片做出來的效果除了使用不同的 extractor 之外，拍照的環境、手法也會對結果造成很大的影響。如果想要做出好的結果，則需要在一個光線充足，盡量不要有影子，並且有延伸感（？）並且周圍的景物不會差異太大的地方，例如：明亮的長長的走廊，光線充足的草坪等。<br>
+
 
 ## Reference
 
