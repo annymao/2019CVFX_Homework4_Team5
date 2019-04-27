@@ -158,9 +158,9 @@ SURF (speeded-up robust features)是基於SIFT發展而成的，改善了其速�
 
 ## Image Alignment and Infinite Zooming Effect
 
-ORB            |  SIFT           |  SURF           |  FLANN
+ORB            |  SIFT           |  FLANN           |  SURF
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![ORB](./Images/out_GIF_ORB.gif)  |  ![](./Images/out_GIF_SIFT.gif)|  ![](./Images/out_GIF_SURF.gif)|  ![](./Images/out_GIF_FLANN.gif)
+![ORB](./Images/out_GIF_ORB.gif)  |  ![](./Images/out_GIF_SIFT.gif)|  ![](./Images/out_GIF_FLANN.gif)|  ![](./Images/out_GIF_SURF.gif)
 
 
 
@@ -173,6 +173,13 @@ ORB            |  SIFT           |  SURF           |  FLANN
 另外從 Feature Extraction 產生的結果也可以看出，到後面幾張圖片的時候，產生了許多交叉的線，這些找錯的 feature matching 就是讓圖片扭曲的主要原因。我們嘗試了在很多種放大倍率的情況下加入圖片，但效果都不彰。
 <img src="./Images/OUTSIFT.png" width="300px" />
 
+除此之外，我們也懷疑可能是圖片的關係導致效果不好，所以我們也利用了 Ａ 圖片產生結果
+
+ORB            |  ＦＬＡＮＮ           
+:-------------------------:|:-------------------------:
+![ORB](./Images/out2_GIF_ORB.gif)  |  ![](./Images/out2_GIF_FLANN.gif)
+
+這兩個看起來效果還可以，可能是因為 Ａ 圖片的光線比較充足，並且在拍攝的時候拍攝者是每兩步就拍一張照片，距離比較固定，所以在疊圖的過程中比較不會產生很嚴重的扭曲情形。而 Ｂ 圖片在拍攝的時候，每張之間的間距不ㄧ，並且光線也比較有明暗上的差距，這可能是導致扭曲的原因。另外我們覺得，Ｂ 所在的走廊有許多門，這可能導致 feature matching 的時候他 match 到錯的門，這可能也是會導致扭曲的原因之一。
 
 ## Image Processing
 
@@ -183,7 +190,7 @@ ORB            |  SIFT           |  SURF           |  FLANN
 	<img src="./Images/after.png" width="300px" />
 </p>
 
-由於上面用 Image Align 做出來的效果實在是差強人意，故我們後來使用 AE 來進行實作以下為我們產生的成果(點擊圖片可進入 youtube 連結)：
+由於上面用 Image Align 做出來的效果實在是差強人意，故我們後來使用 AE 來進行實作以下為我們用 B. 雅齋2樓走廊的圖片 產生的成果(點擊圖片可進入 youtube 連結)：
 [![Youtube](./Images/Youtube.png)](https://www.youtube.com/watch?v=7wjfgfAkjJU)
 
 我們的實作方式是參考[這個連結](https://www.youtube.com/watch?v=pOmW76fADz8&t=80s)所做的，對於圖片的邊界也進行了羽化的處理，讓邊界看起來不要那麼明顯。<br>
