@@ -197,11 +197,11 @@ ORB            |  ＦＬＡＮＮ
 [![Youtube](./Images/Youtube.png)](https://www.youtube.com/watch?v=7wjfgfAkjJU)
 
 我們的實作方式是參考[這個連結](https://www.youtube.com/watch?v=pOmW76fADz8&t=80s)所做的，對於圖片的邊界也進行了羽化的處理，讓邊界看起來不要那麼明顯。<br>
-利用 AE 做出來的效果比 code 看起來好非常多，如果就一次摸索得人來說，我覺得使用 AE 也比用 code 容易，因為要很好的去 extract 出 feature 並正確的 align 實在太難了。但如果真的寫出來可以做出很好結果的 code，那所花費的時間就可以快上很多。
+利用 AE 做出來的效果比 code 看起來好非常多，如果就一次摸索的人來說，我覺得使用 AE 也比用 code 容易，因為要很好的去 extract 出 feature 並正確的 align 實在太難了。但如果真的寫出來可以做出很好結果的 code，那所花費的時間就可以快上很多。
 
 ## Conclusion
 
-|    name    |  ORB    | SIFT        | SURF |
+|            |  ORB    | SIFT        | SURF |
 | :--------: |  :--:   | :--:        | :--: |
 |    速度    |  快     |  慢         |  中  |
 |    用途    |  ...    | blob、corner| corner、texture|
