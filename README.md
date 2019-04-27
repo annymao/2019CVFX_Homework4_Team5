@@ -27,7 +27,7 @@
 再針對keypoint計算feature就能用來辨識物體。總而言之，大致上的步驟可以歸納為 <br>
 keypoint detection -> feature extration -> feature matching <br>
 
-<img src="./Images/choice.png" width="500px" /> 
+<img src="./Images/choice.png" width="700px" /> 
 <img src="./Images/rabbit.png" width="500px" /> 
 
 下面我們會介紹並比較三種較為常見的feature extraction演算法。
