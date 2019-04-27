@@ -22,6 +22,8 @@
 
 ## Feature Extraction and Comparison
 
+在做影像辨識的時候，能夠提供資訊
+
 #### A. ORB
 
 ORB (Oriented Fast and rotated BRIEF) 是將FAST和BRIEF特徵描述的方式結合起來，並在他們的基礎上做改進跟優化。<br>
@@ -80,13 +82,10 @@ SIFT (scale-invariant feature transform)會針對每個選定的keypoint取周�
 
 |    name    |  ORB  | SIFT | SURF |
 | :--------: |  :--: | :--: | :--: |
-|    速度    |  快   |  中  |  慢  |
+|    速度    |  快   |  慢  |  中  |
 | ...        |  ...  | ...  |  ... |
 
 ## Reference
 
-在 [SIFT,SURF,ORB,FAST,BRISK 特徵提取演算法比較](https://www.itread01.com/content/1546487137.html)這篇文章中有對各種feature extraction演算法進行詳細的比較。<br>
-其中在ORB、SIFT、SURF三項的執行時間上與我們的結論相符合。
 
-<img src="./Images/comparison.png" width="600px" />
 
