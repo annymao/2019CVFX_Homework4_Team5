@@ -183,6 +183,7 @@ ORB            |  ＦＬＡＮＮ
 
 ## Image Processing
 
+
 在做image alignment的時候，我們嘗試在邊緣的地方加上羽化的效果，如此一來可以讓視覺效果變得比較柔和，不會有明顯的界線。
 
 <p float="left">
